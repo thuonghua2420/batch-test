@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dao\Dao.csproj" />
+    <ProjectReference Include="$(CoreBatchRoot)CoreBatch\CoreBatch.csproj" />
+    <Reference Include="log4net">
+      <HintPath>$(CoreBatchRoot)lib\log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
