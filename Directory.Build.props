@@ -1,8 +1,7 @@
 <Project>
   <PropertyGroup>
-    <!-- Repo repo-core-batch phai nam canh repo nay (cung thu muc cha). Chi can sua 1 cho nay. -->
-    <CoreBatchRoot>$([MSBuild]::EnsureTrailingSlash('$(MSBuildThisFileDirectory)..\repo-core-batch'))</CoreBatchRoot>
     <TargetFramework>net472</TargetFramework>
     <LangVersion>7.3</LangVersion>
+    <CoreBatchVersion>1.0.0</CoreBatchVersion>
   </PropertyGroup>
 </Project>

@@ -6,25 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Chi dung de chay test (runner/adapter). Thu vien NUnit chinh lay tu package cua repo-core-batch. -->
+    <!-- Chi de chay test (runner/adapter) -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>$(CoreBatchRoot)package\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>$(CoreBatchRoot)lib\log4net.dll</HintPath>
-    </Reference>
+    <!-- Keo theo CoreBatch + NUnit nhu dependency -->
+    <PackageReference Include="CoreBatch.Test" Version="$(CoreBatchVersion)" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj" />
     <ProjectReference Include="..\Dao\Dao.csproj" />
-    <ProjectReference Include="$(CoreBatchRoot)CoreBatch\CoreBatch.csproj" />
-    <ProjectReference Include="$(CoreBatchRoot)CoreBatch.Test\CoreBatch.Test.csproj" />
   </ItemGroup>
 
 </Project>

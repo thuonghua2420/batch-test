@@ -2,10 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dao\Dao.csproj" />
-    <ProjectReference Include="$(CoreBatchRoot)CoreBatch\CoreBatch.csproj" />
-    <Reference Include="log4net">
-      <HintPath>$(CoreBatchRoot)lib\log4net.dll</HintPath>
-    </Reference>
+    <PackageReference Include="CoreBatch" Version="$(CoreBatchVersion)" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,42 @@
+name: Build and test Batch
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+env:
+  # nuget.config doc 2 bien nay de dang nhap GitHub Packages
+  GH_USER: ${{ github.repository_owner }}
+  # Neu package CoreBatch o repo khac chua cap quyen cho repo nay thi tao secret PACKAGES_TOKEN (PAT, scope read:packages)
+  GH_TOKEN: ${{ secrets.PACKAGES_TOKEN || secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore Batch.sln
+
+      - name: Build
+        run: dotnet build Batch.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test Batch.sln -c Release --no-build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: main-exe
+          path: Main/bin/Release/net472/
